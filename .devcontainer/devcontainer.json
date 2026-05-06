@@ -1,0 +1,70 @@
+{
+    "image": "diemobiliar.azurecr.io/had-development-poetry312-image:1.0.237",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "22"
+        }
+    },
+    "mounts": [
+        "source=userhome_uphill,target=/home/user,type=volume"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.pylint",
+                "ms-python.black-formatter",
+                "ms-python.isort",
+                "Cameron.vscode-pytest",
+                "nickmillerdev.pytest-fixtures",
+                "databricks.databricks",
+                "tamasfe.even-better-toml",
+                "eamodio.gitlens",
+                "jbockle.jbockle-format-files",
+                "bierner.markdown-mermaid"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+                "python.testing.pytestEnabled": true,
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestArgs": [
+                    "tests"
+                ],
+                "python.analysis.inlayHints.pytestParameters": true,
+                "python.analysis.inlayHints.callArgumentNames": "all",
+                "python.analysis.inlayHints.functionReturnTypes": true,
+                "python.analysis.inlayHints.variableTypes": true,
+                "python.analysis.extraPaths": [
+                    "src"
+                ],
+                "python.analysis.typeCheckingMode": "basic",
+                "python.analysis.diagnosticMode": "workspace",
+                "python.analysis.autoFormatStrings": true,
+                "python.analysis.enablePytestSupport": true,
+                "black-formatter.args": [
+                    "--line-length",
+                    "120"
+                ],
+                "python.sortImports.args": ["--profile", "black"],
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": "always"
+                    }
+                }
+            }
+        }
+    },
+    "containerEnv": {
+        "POETRY_VIRTUALENVS_CREATE": "true",
+        "POETRY_VIRTUALENVS_IN_PROJECT": "true",
+        "UV_SYSTEM_CERTS": "1"
+    },
+    "runArgs": [
+        "--init",
+        "--security-opt",
+        "seccomp=unconfined"
+    ]
+}

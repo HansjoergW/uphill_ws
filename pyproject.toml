@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "uphill"
+version = "0.1.0"
+description = ""
+authors = ["Hansjoerg Wingeier (u118187) <hansjoerg.wingeier@mobi.ch>"]
+readme = "README.md"
+packages = [{ include = "had_dbxservice_devtooling", from = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-mock = "^3.12.0"
+black = "^24.10.0"
+pylint = "^3.3.7"
+pyright = "^1.1.403"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = "R,C,W0511,fixme"
+
+[tool.pylint.'TYPECHECK']
+signature-mutators =["click.decorators.option",
+                    "click.decorators.argument",
+                    "click.decorators.version_option",
+                    "click.decorators.help_option",
+                    "click.decorators.pass_context",
+                    "click.decorators.confirmation_option"]
+
+[tool.pytest.ini_options]
+addopts = "-s -p no:warnings"
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "[pytest][%(asctime)s][%(levelname)s][%(module)s][%(funcName)s] %(message)s"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+log_level = "INFO"
+pythonpath = "src"
+testpaths = ["tests"]
+markers = [
+    "resource_path(path): override test resource root path for bundle-related fixtures",
+]
+
+[tool.black]
+line-length = 120
+target-version = ["py312"]
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+line_length = 120

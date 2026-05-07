@@ -1,0 +1,7 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "uv": true,
+        "npm run dev": true,
+        "env": true
+    }
+}

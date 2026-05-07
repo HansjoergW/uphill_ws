@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nypl-red: #F45750;
+  --color-nypl-red-light: #F67872;
+  --color-nypl-red-dark: #D94840;
+  --color-nypl-white: #FFFFFF;
+  --color-nypl-gray: #333333;
+  --color-nypl-gray-light: #F5F5F5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color-nypl-gray);
+  background-color: var(--color-nypl-gray-light);
+}
